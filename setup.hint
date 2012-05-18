@@ -1,4 +1,4 @@
 category: KDE Games
-requires: libgcc1 libkdecore5 libkdeedu4 libphonon4 libQtCore4 libQtDBus4 libQtGui4 libstdc++6 libX11_6 libxml2 libXrender1 libxslt
+requires: libgcc1 libkdecore5 libkdeedu4 libphonon4 libQtCore4 libQtDBus4 libQtGui4 libQtSvg4 libstdc++6 libX11_6 libxml2 libXrender1 libxslt
 sdesc: "KDE vocabulary trainer"
 ldesc: "KDE education suite"
