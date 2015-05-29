@@ -6,4 +6,5 @@ RELEASE=1
 CATEGORY="Games"
 SUMMARY="KDE vocabulary trainer"
 DESCRIPTION="Part of the KDE education suite"
-REQUIRES="kross-python"
+
+REQUIRES="kde-runtime kross-python"
