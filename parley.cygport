@@ -1,10 +1,10 @@
-inherit kde4 python
+inherit kf5 python
 
 NAME="parley"
-VERSION=4.14.3
+VERSION=16.08.3
 RELEASE=1
 CATEGORY="Games"
 SUMMARY="KDE vocabulary trainer"
 DESCRIPTION="Part of the KDE education suite"
 
-REQUIRES="kde-runtime kross-python"
+REQUIRES="kf5-kross-python"
