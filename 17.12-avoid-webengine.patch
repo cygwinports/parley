@@ -1,0 +1,64 @@
+Revert https://cgit.kde.org/parley.git/commit/?id=7e6eb4e
+
+--- origsrc/parley-17.12.3/CMakeLists.txt	2018-03-05 18:13:52.000000000 -0600
++++ src/parley-17.12.3/CMakeLists.txt	2018-03-14 16:43:24.851013400 -0500
+@@ -21,7 +21,6 @@ find_package(Qt5 ${REQUIRED_QT_VERSION}
+   Svg
+   Concurrent
+   Multimedia
+-  WebEngineWidgets
+ )
+ 
+ find_package(KF5 5.22 MODULE REQUIRED COMPONENTS
+@@ -104,7 +103,6 @@ set( parley_LINK_LIBS
+   KF5::Notifications
+   KF5::Crash
+   KF5::CoreAddons
+-  Qt5::WebEngineWidgets
+ )
+ 
+ message(STATUS "cmake cflags ${CMAKE_C_FLAGS}")
+--- origsrc/parley-17.12.3/src/CMakeLists.txt	2018-01-10 01:43:29.000000000 -0600
++++ src/parley-17.12.3/src/CMakeLists.txt	2018-03-14 16:43:08.763988100 -0500
+@@ -32,7 +32,7 @@ set(parley_LIB_SRCS
+     editor/vocabularyview.cpp
+     editor/wordtypeview.cpp
+     editor/audiowidget.cpp
+-    editor/browserwidget.cpp
++    #editor/browserwidget.cpp
+     editor/comparisonwidget.cpp
+     editor/inflectionwidget.cpp
+     editor/conjugationwidget.cpp
+--- origsrc/parley-17.12.3/src/editor/editor.cpp	2018-01-10 01:43:29.000000000 -0600
++++ src/parley-17.12.3/src/editor/editor.cpp	2018-03-14 16:49:50.748552000 -0500
+@@ -36,7 +36,7 @@
+ #include "inflectionwidget.h"
+ #include "imagechooserwidget.h"
+ #include "audiowidget.h"
+-#include "browserwidget.h"
++//#include "browserwidget.h"
+ #include "synonymwidget.h"
+ #include "summarywordwidget.h"
+ #include "latexwidget.h"
+@@ -353,17 +353,17 @@ void EditorWindow::initDockWidgets()
+ // browser
+     QDockWidget *browserDock = new QDockWidget(i18n("Internet"), this);
+     browserDock->setObjectName(QStringLiteral("BrowserDock"));
+-    BrowserWidget *htmlPart = new BrowserWidget(browserDock);
++    //BrowserWidget *htmlPart = new BrowserWidget(browserDock);
+     QScrollArea *browserScrollArea = new QScrollArea(this);
+     browserScrollArea->setWidgetResizable(true);
+-    browserScrollArea->setWidget(htmlPart);
++    //browserScrollArea->setWidget(htmlPart);
+     browserDock->setWidget(browserScrollArea);
+     addDockWidget(Qt::BottomDockWidgetArea, browserDock);
+     m_dockWidgets.append(browserDock);
+     actionCollection()->addAction(QStringLiteral("show_browser_dock"), browserDock->toggleViewAction());
+     browserDock->setVisible(false);
+-    connect(m_vocabularyView, &VocabularyView::translationChanged,
+-            htmlPart, &BrowserWidget::setTranslation);
++    // connect(m_vocabularyView, &VocabularyView::translationChanged,
++    //         htmlPart, &BrowserWidget::setTranslation);
+     tabifyDockWidget(summaryDock,browserDock);
+ 
+ // LaTeX

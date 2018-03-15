@@ -1,10 +1,12 @@
-inherit kf5 python
+inherit kf5 python2
 
 NAME="parley"
-VERSION=17.08.3
+VERSION=17.12.3
 RELEASE=1
 CATEGORY="Games"
 SUMMARY="KDE vocabulary trainer"
 DESCRIPTION="Part of the KDE education suite"
+
+PATCH_URI="17.12-avoid-webengine.patch"
 
 REQUIRES="kf5-kross-python"
